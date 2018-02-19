@@ -1,0 +1,19 @@
+CC		= g++ -std=c++0x
+CFLAGS		= -g -c -Wall
+LDFLAGS		= 
+SOURCES		= client.cpp tcpsocket.cpp clienttcpsocket.cpp
+INCLUDES	= -I.
+OBJECTS		= $(SOURCES:.cpp=.o)
+TARGET		= client
+
+all: $(SOURCES) $(TARGET)
+
+$(TARGET): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ 
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET)
+

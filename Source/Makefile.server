@@ -1,0 +1,20 @@
+CC		= g++
+CFLAGS		= -g -c -Wall -lpthread
+LDFLAGS		= 
+SOURCES		= server.cpp tcpsocket.cpp servertcpsocket.cpp requesthandler.cpp
+LDAPFLAGS	= -DLDAP_DEPRECATED -lldap -llber 
+INCLUDES	= -I.
+OBJECTS		= $(SOURCES:.cpp=.o)
+TARGET		= server
+
+all: $(SOURCES) $(TARGET)
+
+$(TARGET): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -lpthread -o $@ $(LDAPFLAGS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@ $(LDAPFLAGS)
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET)
+
