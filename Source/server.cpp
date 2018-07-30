@@ -15,9 +15,9 @@
 
 #define BUFFER_SIZE 4096
 
-#define LDAP_HOST "ldap.technikum-wien.at"
+#define LDAP_HOST "test.com"
 #define LDAP_PORT 389
-#define SEARCHBASE "dc=technikum-wien,dc=at"
+#define SEARCHBASE "dc=test,dc=com"
 #define SCOPE LDAP_SCOPE_SUBTREE
 #define BIND_USER NULL		/* anonymous bind with user and pw NULL */
 #define BIND_PW NULL
@@ -90,9 +90,6 @@ int main(int argc, char** argv)
     delete first;
     return 0;
 }
-
-
-
 
 
 int ldapConnect(std::string username_input, std::string passsword_input)
